@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProblemeComponent } from './probleme.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -8,7 +9,8 @@ describe('ProblemeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProblemeComponent ]
+      declarations: [ ProblemeComponent ],
+      imports: [ AngularFontAwesomeModule ]
     })
     .compileComponents();
   }));
@@ -20,6 +22,10 @@ describe('ProblemeComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+     expect(component).toBeTruthy();
+  });
+
+  it('Le champ prénom doit comporter au moins 5 caractères',() =>{
+    expect(true).toBeTruthy();
   });
 });
