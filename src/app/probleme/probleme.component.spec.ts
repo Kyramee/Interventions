@@ -43,4 +43,9 @@ describe('ProblemeComponent', () => {
     zone.setValue('Allo'.repeat(50));
     expect(zone.valid).toBeTruthy();
   });
+
+  it('Zone PRÉNOM invalide avec aucune valeur',() =>{
+    let zone = component.problemeForm.controls['prenom'];
+    expect(zone.valid).toBeFalsy();
+  });
 });

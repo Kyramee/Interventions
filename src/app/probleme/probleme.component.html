@@ -20,6 +20,11 @@
                     Veuillez entrer plus de caractères.
                   </small>
                 </span>
+                <span *ngIf="problemeForm.get('prenom').errors.required">
+                  <small class="text-muted">
+                    Merci de saisir votre prénom.
+                  </small>
+                </span>
               </span>         
             </div>
           </div>
