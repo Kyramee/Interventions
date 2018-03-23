@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProblemeComponent } from './probleme.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -10,7 +11,7 @@ describe('ProblemeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ProblemeComponent ],
-      imports: [ AngularFontAwesomeModule ]
+      imports: [ AngularFontAwesomeModule, ReactiveFormsModule ]
     })
     .compileComponents();
   }));
@@ -25,7 +26,9 @@ describe('ProblemeComponent', () => {
      expect(component).toBeTruthy();
   });
 
-  it('Le champ prénom doit comporter au moins 5 caractères',() =>{
-    expect(true).toBeTruthy();
+  it('Zone PRÉNOM invalide avec 2 caractères',() =>{
+    let zone = component.problemeForm.controls['prenom'];
+    zone.setValue('a'.repeat(2));
+    expect(zone.valid).toBeFalsy();
   });
 });
