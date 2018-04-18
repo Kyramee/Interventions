@@ -29,41 +29,49 @@ describe('ProblemeComponent', () => {
   it('Zone PRÉNOM invalide avec 2 caractères',() =>{
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('a'.repeat(2));
-    expect(zone.valid).toBeFalsy();
+    let errors = zone.errors || {};
+    expect(errors['longueurMinimum']).toBeTruthy();
   });
 
   it('Zone PRÉNOM valide avec 3 caractères',() =>{
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('a'.repeat(3));
-    expect(zone.valid).toBeTruthy();
+    let errors = zone.errors || {};
+    expect(errors['longueurMinimum']).toBeFalsy();
   });
 
   it('Zone PRÉNOM valide avec 200 caractères',() =>{
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('Allo'.repeat(50));
-    expect(zone.valid).toBeTruthy();
+    let errors = zone.errors || {};
+    expect(errors['longueurMinimum']).toBeFalsy();
   });
 
   it('Zone PRÉNOM invalide avec aucune valeur',() =>{
     let zone = component.problemeForm.controls['prenom'];
-    expect(zone.valid).toBeFalsy();
+    zone.setValue('');
+    let errors = zone.errors || {};
+    expect(errors['longueurMinimum']).toBeTruthy();
   });
 
   it('Zone PRÉNOM invalide avec 1 caractère',() =>{
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('a'.repeat(1));
-    expect(zone.valid).toBeFalsy();
+    let errors = zone.errors || {};
+    expect(errors['longueurMinimum']).toBeTruthy();
   });
 
-  it('Zone PRÉNOM valide avec 50 espaces',() =>{
+  it('Zone PRÉNOM invalide avec 50 espaces',() =>{
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue(' '.repeat(50));
-    expect(zone.valid).toBeTruthy();
+    let errors = zone.errors || {};
+    expect(errors['longueurMinimum']).toBeTruthy();
   });
 
-  it('Zone PRÉNOM valide avec 2 espaces et 1 caractère',() =>{
+  it('Zone PRÉNOM invalide avec 2 espaces et 1 caractère',() =>{
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('  a');
-    expect(zone.valid).toBeTruthy();
+    let errors = zone.errors || {};
+    expect(errors['longueurMinimum']).toBeTruthy();
   });
 });

@@ -16,10 +16,16 @@ export class verifCaracteres {
         return (c: AbstractControl): { [key: string]: boolean } | null => {
             for(var i = 0; i < c.value.length; i++){
                 if(c.value[i] != ' '){
-                    return {'chaine' : true};
+                    return {'sansEspace' : true};
                 }
             }
-            return {'chaine' : false};
+            return {'sansEspace' : false};
         };
+    }
+
+    static longueurMinimum(): ValidatorFn{
+        return (c: AbstractControl): { [key: string]: boolean } | null => {
+            return {'longueurMinimum' : (c.value.trim().length > 2) ? false : true };
+        }
     }
 }
