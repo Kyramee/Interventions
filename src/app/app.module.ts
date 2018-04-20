@@ -9,6 +9,12 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ProblemeComponent } from './probleme/probleme.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ProblemeData } from './probleme/probleme-date';
+import { TypeProblemeService } from './probleme/type-probleme.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +26,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule .forRoot(ProblemeData)
   ],
-  providers: [],
+  providers: [TypeProblemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
