@@ -101,4 +101,28 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('groupCourriel.confirmationCourriel');
     expect(zone.status).toEqual('DISABLED');
   });
+
+  it('Zone CONFIRMER COURRIEL est invalide sans valeur quand notifier par courriel',() => {
+
+  });
+
+  it('Zone ADRESSE COURRIEL est invalide avec un format non conforme',() => {
+   
+  });
+
+  it('Zone ADRESSE COURRIEL sans valeur et Zone CONFIRMER COURRIEL avec valeur valide retourne null ',() => {
+   
+  });
+
+  it('Zone ADRESSE COURRIEL avec valeur valide et Zone CONFIRMER COURRIEL sans valeur retourne null',() => {
+   
+  });
+
+  it('Zones ADRESSE COURRIEL et CONFIRMER COURRIEL sont invalides si les valeurs sont différentes quand notifier par courriel',() => {
+   
+  });
+
+  it('Zones ADRESSE COURRIEL et CONFIRMER COURRIEL sont valides si les valeurs sont identiques quand notifier par courriel',() => {
+   
+  });
 });
