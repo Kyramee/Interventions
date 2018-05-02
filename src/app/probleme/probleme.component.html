@@ -157,7 +157,7 @@
                             formControlName="confirmationCourriel" [ngClass]="{'is-valid': (problemeForm.get('groupCourriel.confirmationCourriel').touched
                             || problemeForm.get('groupCourriel.confirmationCourriel').dirty) && problemeForm.get('groupCourriel.confirmationCourriel').valid,
                             'is-invalid': (problemeForm.get('groupCourriel.confirmationCourriel').touched || problemeForm.get('groupCourriel.confirmationCourriel').dirty)
-                            && !problemeForm.get('groupCourriel.confirmationCourriel').valid || problemeForm.get('groupCourriel').errors?.erreurDifferent}"
+                            && !problemeForm.get('groupCourriel.confirmationCourriel').valid && problemeForm.get('groupCourriel').errors?.erreurDifferent}"
               />
               <span class="form-text" *ngIf="(problemeForm.get('groupCourriel.confirmationCourriel').touched ||
                               problemeForm.get('groupCourriel.confirmationCourriel').dirty) &&
