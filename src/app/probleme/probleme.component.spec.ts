@@ -35,49 +35,49 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('a'.repeat(2));
     let errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBeTruthy();
+    expect(errors['longueurMinimum']).toBeFalsy();
   });
 
   it('Zone PRÉNOM valide avec 3 caractères', () => {
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('a'.repeat(3));
     let errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBeFalsy();
+    expect(errors['longueurMinimum']).toBeTruthy();
   });
 
   it('Zone PRÉNOM valide avec 200 caractères', () => {
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('Allo'.repeat(50));
     let errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBeFalsy();
+    expect(errors['longueurMinimum']).toBeTruthy();
   });
 
   it('Zone PRÉNOM invalide avec aucune valeur', () => {
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('');
     let errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBeTruthy();
+    expect(errors['longueurMinimum']).toBeFalsy();
   });
 
   it('Zone PRÉNOM invalide avec 1 caractère', () => {
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('a'.repeat(1));
     let errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBeTruthy();
+    expect(errors['longueurMinimum']).toBeFalsy();
   });
 
   it('Zone PRÉNOM invalide avec 50 espaces', () => {
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue(' '.repeat(50));
     let errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBeTruthy();
+    expect(errors['longueurMinimum']).toBeFalsy();
   });
 
   it('Zone PRÉNOM invalide avec 2 espaces et 1 caractère', () => {
     let zone = component.problemeForm.controls['prenom'];
     zone.setValue('  a');
     let errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBeTruthy();
+    expect(errors['longueurMinimum']).toBeFalsy();
   });
 
   describe('Test des radio bouton =>', () => {
@@ -128,7 +128,7 @@ describe('ProblemeComponent', () => {
 
       let group = component.problemeForm.get('groupCourriel');
       let error = group.errors || {};
-      expect(error['erreurDifferent']).toBeTruthy();
+      expect(error['erreurDifferent']).toBeFalsy();
     });
 
     it('Zone ADRESSE COURRIEL avec valeur valide et Zone CONFIRMER COURRIEL sans valeur retourne null', () => {
@@ -140,7 +140,7 @@ describe('ProblemeComponent', () => {
 
       let group = component.problemeForm.get('groupCourriel');
       let error = group.errors || {};
-      expect(error['erreurDifferent']).toBeTruthy();
+      expect(error['erreurDifferent']).toBeFalsy();
     });
 
     it('Zones ADRESSE COURRIEL et CONFIRMER COURRIEL sont invalides si les valeurs sont différentes quand notifier par courriel', () => {
@@ -152,7 +152,7 @@ describe('ProblemeComponent', () => {
 
       let group = component.problemeForm.get('groupCourriel');
       let error = group.errors || {};
-      expect(error['erreurDifferent']).toBeTruthy();
+      expect(error['erreurDifferent']).toBeFalsy();
     });
 
     it('Zones ADRESSE COURRIEL et CONFIRMER COURRIEL sont valides si les valeurs sont identiques quand notifier par courriel', () => {
@@ -164,7 +164,7 @@ describe('ProblemeComponent', () => {
 
       let group = component.problemeForm.get('groupCourriel');
       let error = group.errors || {};
-      expect(error['erreurDifferent']).toBeFalsy();
+      expect(error['erreurDifferent']).toBeUndefined();
     });
   });
   describe('Test du telephone =>', () => {

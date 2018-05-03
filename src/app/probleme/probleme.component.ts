@@ -28,7 +28,10 @@ export class ProblemeComponent implements OnInit {
         courriel: [{ value: '', disabled: true }],
         confirmationCourriel: [{ value: '', disabled: true }]
       }),
-      radio: ['non']
+      radio: ['non'],
+      descriptionProbleme: ['', [Validators.required, Validators.minLength(5)]],
+      noUnite: '',
+      dateProbleme: { value: Date(), disabled: true }
     });
 
     this.typeProbleme.obtenirTypeProbleme().subscribe(cat => this.typeProblemeProduit = cat, error => this.errorMessage = <any>error);
@@ -66,7 +69,7 @@ export class ProblemeComponent implements OnInit {
 
       confirmationControl.setValidators(Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+$')]));
       confirmationControl.enable();
-    } else if (typeNotification == 'text'){
+    } else if (typeNotification == 'text') {
       telephoneControl.setValidators(Validators.compose([Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(10), Validators.maxLength(10)]));
       telephoneControl.enable();
     }

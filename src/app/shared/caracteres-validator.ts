@@ -16,7 +16,7 @@ export class verifCaracteres {
         return (c: AbstractControl): { [key: string]: boolean } | null => {
             for(var i = 0; i < c.value.length; i++){
                 if(c.value[i] != ' '){
-                    return {'sansEspace' : true};
+                    return null;
                 }
             }
             return {'sansEspace' : false};
@@ -25,7 +25,7 @@ export class verifCaracteres {
 
     static longueurMinimum(): ValidatorFn{
         return (c: AbstractControl): { [key: string]: boolean } | null => {
-            return {'longueurMinimum' : (c.value.trim().length > 2) ? false : true };
+            return {'longueurMinimum' : (c.value.trim().length > 2) ? true : false };
         }
     }
 }
