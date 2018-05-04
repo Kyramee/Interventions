@@ -12,10 +12,8 @@
             <label for="prenom" class="col-md-2 col-form-label text-right">Prénom</label>
             <div class="col-md-10">
               <input type="text" class="form-control" id="prenom" placeholder="Votre prénom ici (obliagtoire)" formControlName="prenom"
-                [ngClass]="{'is-invalid': (problemeForm.get('prenom').touched || problemeForm.get('prenom').dirty) && (!problemeForm.get('prenom').errors.longueurMinimum 
-              || problemeForm.get('prenom').errors.required),
-              'is-valid': (problemeForm.get('prenom').touched || problemeForm.get('prenom').dirty) && problemeForm.get('prenom').errors.longueurMinimum 
-              && !problemeForm.get('prenom').errors.required }">
+                [ngClass]="{'is-invalid': (problemeForm.get('prenom').touched || problemeForm.get('prenom').dirty) && !problemeForm.get('prenom').valid,
+              'is-valid': (problemeForm.get('prenom').touched || problemeForm.get('prenom').dirty) && problemeForm.get('prenom').valid }">
               <span class="form-text" *ngIf="(problemeForm.get('prenom').touched || problemeForm.get('prenom').dirty) && problemeForm.get('prenom').errors">
                 <span *ngIf="!problemeForm.get('prenom').errors.longueurMinimum && !problemeForm.get('prenom').errors.required">
                   <small class="text-muted">
@@ -33,10 +31,8 @@
           <div class="form-group row">
             <label for="prenom" class="col-md-2 col-form-label text-right">Nom</label>
             <div class="col-md-10">
-              <input type="text" class="form-control" id="nom" placeholder="Votre prénom ici (obliagtoire)" formControlName="nom" [ngClass]="{'is-invalid':
-              (problemeForm.get('nom').touched || problemeForm.get('nom').dirty) && (!problemeForm.get('nom').errors.longueurMinimum ||
-              problemeForm.get('nom').errors.required), 'is-valid': (problemeForm.get('nom').touched || problemeForm.get('nom').dirty)
-              && problemeForm.get('nom').errors.longueurMinimum && !problemeForm.get('nom').errors.required }">
+              <input type="text" class="form-control" id="nom" placeholder="Votre prénom ici (obliagtoire)" formControlName="nom" [ngClass]="{'is-invalid': (problemeForm.get('nom').touched || problemeForm.get('nom').dirty) && !problemeForm.get('nom').valid,
+                'is-valid': (problemeForm.get('nom').touched || problemeForm.get('nom').dirty) && problemeForm.get('nom').valid }">
               <span class="form-text" *ngIf="(problemeForm.get('nom').touched || problemeForm.get('nom').dirty) && problemeForm.get('nom').errors">
                 <span *ngIf="!problemeForm.get('nom').errors.longueurMinimum && !problemeForm.get('nom').errors.required">
                   <small class="text-muted">
@@ -75,15 +71,15 @@
             <div class="col-md-2"></div>
             <div class="col-md-10">
               <label class="radio-inline">
-                <input type="radio" value="non" id="notifier" formControlName="radio" checked />&nbsp;Ne pas me notifier
+                <input type="radio" value="non" id="notifierNon" formControlName="radio" checked />&nbsp;Ne pas me notifier
               </label>
               &nbsp;&nbsp;&nbsp;
               <label class="radio-inline">
-                <input type="radio" value="courriel" id="notifier" formControlName="radio" />&nbsp;Par courriel
+                <input type="radio" value="courriel" id="notifierCourriel" formControlName="radio" />&nbsp;Par courriel
               </label>
               &nbsp;&nbsp;&nbsp;
               <label class="radio-inline">
-                <input type="radio" value="text" id="notifier" formControlName="radio" />&nbsp;Par message texte
+                <input type="radio" value="text" id="notifierText" formControlName="radio" />&nbsp;Par message texte
               </label>
             </div>
           </div>
@@ -222,7 +218,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-10">
               <span>
-                <button class="btn btn-primary" type="submit" [disabled]="!problemeForm.valid">
+                <button id="save" class="btn btn-primary" type="submit" [disabled]="!problemeForm.valid">
                   <fa name="save"></fa>
                   &nbsp;&nbsp;Sauvegarder
                 </button>

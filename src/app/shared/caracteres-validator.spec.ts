@@ -27,7 +27,7 @@ describe('sansEspace Validator', () => {
         let control = { value: "hello   world   how   are   you  ?" };
         let validator = verifCaracteres.sansEspace();
         let result = validator(control as AbstractControl);
-        expect(result).toBeFalsy();
+        expect(result).toBeNull();
     });
 });
 
@@ -50,14 +50,14 @@ describe('longueurMinimum Validator', () => {
         let control = { value: "  J’aime Angular" };
         let validator = verifCaracteres.longueurMinimum();
         let result = validator(control as AbstractControl);
-        expect(result['longueurMinimum']).toBeTruthy();
+        expect(result).toBeNull();
     });
 
     it('une phrase avec 5 espaces, 5 caractères et 5 espaces est valide', () => {
         let control = { value: "  J’aime Angular  " };
         let validator = verifCaracteres.longueurMinimum();
         let result = validator(control as AbstractControl);
-        expect(result['longueurMinimum']).toBeTruthy();
+        expect(result).toBeNull();
     });
 });
 

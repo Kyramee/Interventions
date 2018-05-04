@@ -5,7 +5,7 @@ export class emailMatcherValidator {
     static courrielDifferents(): ValidatorFn {
         return (c: AbstractControl): { [key: string]: boolean } | null => {
             if (!c['controls'].courriel.value || !c['controls'].confirmationCourriel.value) {
-                return { 'erreurDifferent': false };
+                return null;
             }
             
             return c['controls'].courriel.value === c['controls'].confirmationCourriel.value ? null : { 'erreurDifferent': false };

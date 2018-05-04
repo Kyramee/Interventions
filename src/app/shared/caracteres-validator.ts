@@ -5,7 +5,7 @@ export class verifCaracteres {
     static plage(): ValidatorFn {
         return(c: AbstractControl): { [key: string]: boolean } | null => {
             if(c.value >= 1 && c.value <= 5) {
-                return { 'plage' : true };
+                return null;
             } else {
                 return { 'plage' : false };
             }
@@ -25,7 +25,7 @@ export class verifCaracteres {
 
     static longueurMinimum(): ValidatorFn{
         return (c: AbstractControl): { [key: string]: boolean } | null => {
-            return {'longueurMinimum' : (c.value.trim().length > 2) ? true : false };
+            return (c.value.trim().length > 2) ? null : {'longueurMinimum' : false };
         }
     }
 }
